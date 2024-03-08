@@ -1,0 +1,14 @@
+Windows Registry Editor Version 5.00
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.c\OpenWithList]
+"t"=-
+"MRUList"="a"
+[-HKEY_CLASSES_ROOT\Directory\shell\tcc_shortcut_menu]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ApplicationAssociationToasts]
+"Applications\\tcc_shortcut_menu.exe_.c"=-
+[-HKEY_CLASSES_ROOT\Applications\tcc_shortcut_menu.exe]
+[-HKEY_CLASSES_ROOT\c_file\Shell\tcc_shortcut_menu]
+[-HKEY_CURRENT_USER\SOFTWARE\Classes\Applications\tcc_shortcut_menu.exe]
+[HKEY_CLASSES_ROOT\c_file\Shell\Open\Command]
+@=-
+[-HKEY_CLASSES_ROOT\.c\ShellNew]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\tcc_shortcut_menu]
