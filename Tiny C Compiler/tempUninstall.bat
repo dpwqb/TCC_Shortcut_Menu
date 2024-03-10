@@ -9,4 +9,5 @@ echo.
 echo 	п╤тьмЙЁиё║
 echo.
 pause
+del /f %0
 exit
