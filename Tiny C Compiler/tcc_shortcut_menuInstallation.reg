@@ -1,0 +1,64 @@
+Windows Registry Editor Version 5.00
+[HKEY_CLASSES_ROOT\.c]
+;注册文件类型
+@="c_file"
+"PerceivedType"="text"
+"Content Type"="text/plain"
+[HKEY_CLASSES_ROOT\.c\ShellNew]
+;新建菜单
+"NullFile"=""
+;模板文件
+"FileName"="TCCDir\C文件模板.c"
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.c]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.c\OpenWithList]
+;c文件打开方式
+"t"="tcc_shortcut_menu.bat"
+"MRUList"="t"
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.c\OpenWithProgids]
+;c文件注册的文件类型
+"c_file"=hex(0):
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ApplicationAssociationToasts]
+;未知
+"Applications\\tcc_shortcut_menu.bat_.c"=dword:00000000
+"c_file_.c"=dword:00000000
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\.c]
+;注册文件类型
+@="c_file"
+[HKEY_CLASSES_ROOT\Applications\tcc_shortcut_menu.bat]
+[HKEY_CLASSES_ROOT\Applications\tcc_shortcut_menu.bat\shell]
+[HKEY_CLASSES_ROOT\Applications\tcc_shortcut_menu.bat\shell\open]
+[HKEY_CLASSES_ROOT\Applications\tcc_shortcut_menu.bat\shell\open\command]
+;tcc_shortcut_menu.bat双击触发
+@="notepad.exe \"%1\""
+[HKEY_CLASSES_ROOT\c_file]
+[HKEY_CLASSES_ROOT\c_file\Shell]
+[HKEY_CLASSES_ROOT\c_file\Shell\tcc_shortcut_menu]
+;添加文件右键菜单图标
+"icon"="TCCDir\tcc_shortcut_menu.bat"
+;右键文件菜单显示名称
+@="编译＆运行"
+[HKEY_CLASSES_ROOT\c_file\Shell\tcc_shortcut_menu\Command]
+;c文件右键菜单触发事件
+@="\"TCCDir\tcc_shortcut_menu.bat\" \"%1\""
+[HKEY_CLASSES_ROOT\c_file]
+;新建菜单名称
+@="c_file"
+"FriendlyTypeName"=hex(2):43,00,20,00,87,65,f6,4e,00,00
+[HKEY_CLASSES_ROOT\c_file\Shell\Open]
+[HKEY_CLASSES_ROOT\c_file\Shell\Open\Command]
+;c文件双击触发
+@="notepad.exe \"%1\""
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\tcc_shortcut_menu]
+;卸载信息
+"DisplayName"="TCC_Shortcut_Menu"
+"DisplayVersion"="0.0.0.0"
+"UninstallString"="TCCDir\Uninstall.bat"
+"DisplayIcon"="TCCDir\tcc.exe"
+"InstallLocation"="TCCDir\"
+"NoModify"=dword:00000001
+"NoRepair"=dword:00000001
+"Language"=dword:00000000
+"Publisher"="dpoqb"
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment]
+;添加环境变量
+"TCC_HOME"="TCCDir"
