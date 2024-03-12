@@ -12,3 +12,5 @@ Windows Registry Editor Version 5.00
 @=-
 [-HKEY_CLASSES_ROOT\.c\ShellNew]
 [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\tcc_shortcut_menu]
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment]
+"TCC_HOME"=-
