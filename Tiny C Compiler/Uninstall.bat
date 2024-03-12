@@ -21,10 +21,13 @@ goto as_admin
 )
 :unload
 regedit /s tcc_shortcut_menuUnload.reg
-md "%temp%\TinyCCompiler" 1>NUL 2>NUL
-copy /y "tempUninstall.bat" "%temp%\TinyCCompiler\" 1>NUL 2>NUL
-echo %~dp0>"%temp%\TinyCCompiler\uninstalldir.log"
-start cmd /c call "%temp%\TinyCCompiler\tempUninstall.bat"
+rem 删除注册表
+copy /y "tempUninstall.bat" "%temp%\TinyCCompiler_tempUninstall.bat" 1>NUL 2>NUL
+rem 复制安装路径到临时文件
+echo %~dp0>"%temp%\TinyCCompiler_uninstalldir.log"
+rem 运行临时删除文件
+start cmd /c call "%temp%\TinyCCompiler_tempUninstall.bat"
+del /f /q "%temp%\getadmin.vbs" 1>NUL 2>NUL
 exit
 :not_admin
 echo Set UAC = CreateObject^("Shell.Application"^) > "%temp%\getadmin.vbs"
