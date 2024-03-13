@@ -36,7 +36,7 @@ Windows Registry Editor Version 5.00
 ;添加文件右键菜单图标
 "icon"="TCCDir\tcc_shortcut_menu.bat"
 ;右键文件菜单显示名称
-@="编译＆运行"
+@="直接运行！"
 [HKEY_CLASSES_ROOT\c_file\Shell\tcc_shortcut_menu\Command]
 ;c文件右键菜单触发事件
 @="\"TCCDir\tcc_shortcut_menu.bat\" \"%1\""
@@ -61,4 +61,4 @@ Windows Registry Editor Version 5.00
 "Publisher"="dpoqb"
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment]
 ;添加环境变量
-"TCC_HOME"="TCCDir"
+"TCC_HOME"="TCCDir\"
