@@ -12,7 +12,7 @@ if "%msg%" equ "" goto overnot0
 set "lujing=%~1"
 rem 把源文件路径的\替换为/，用于替换报错信息中多余的文件路径信息。
 set "lujing=%lujing:\=/%"
-rem msg变量用于保存报错信息，为什么要加call我忘了。
+rem msg变量用于保存报错信息，不加call会不符期望，为什么要加？？不知道。
 call,set "msg=%%msg:%lujing%=出错啦！%%"
 echo.
 echo.
