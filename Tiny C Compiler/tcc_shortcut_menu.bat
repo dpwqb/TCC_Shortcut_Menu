@@ -1,19 +1,26 @@
 @echo off
+setlocal enabledelayedexpansion
 cd /d %~dp0
 rem 直接运行C源文件。
 tcc.exe -run "%~1" 2>"%temp%\TCC_Error.log" && (goto over)
+rem 保存返回值
+set returnnumber=%ERRORLEVEL%
 rem 将报错日志的双引号替换为单引号。
 str.exe "%temp%\TCC_Error.log" 0 0 /R /asc:""" /asc:"''" /A
 cls
-rem 待添加逐行读取报错日志文件的功能，而不是仅读取一行错误。
-set /p msg=<"%temp%\TCC_Error.log"
+rem 逐行读取报错日志文件
+for /f "tokens=*" %%a in (%temp%\TCC_Error.log) do (
+set msg=!msg!\n%%a
+)
 rem 如果运行完成后返回非0时，不进行报错弹窗。
 if "%msg%" equ "" goto overnot0
 set "lujing=%~1"
 rem 把源文件路径的\替换为/，用于替换报错信息中多余的文件路径信息。
 set "lujing=%lujing:\=/%"
-rem msg变量用于保存报错信息，不加call会不符期望，为什么要加？？不知道。
-call,set "msg=%%msg:%lujing%=出错啦！%%"
+rem 替换变量中的指定子串为指定字符串，格式：“call,set "msg=%%变量名:被替换的字串=目标字符串%%"”，msg变量用于保存报错信息，为什么要加call我忘了。
+call,set "msg=%%msg:%lujing%:= 在第%%"
+call,set "msg=%%msg:: warning: =行附近有警告→%%"
+call,set "msg=%%msg:: error: =行附近有错误→%%"
 echo.
 echo.
 echo.
@@ -25,14 +32,15 @@ echo.
 echo.
 echo 	错误：
 echo.
-echo 	%msg:出错啦！=%
+echo  详细的报错日志在%temp%\TCC_Error.log
+echo %msg:\n 在第=	错误信息：%
 rem 将报错日志的第一行通过弹窗提示用户。
-mshta vbscript:msgbox(Replace("%msg%\n→也许不止一个问题~","\n",vbCrLf),16,"Error!")(window.close)
+mshta vbscript:msgbox(Replace("%msg%\n\n→错的一塌糊涂~","\n",vbCrLf),16,"Error!")(window.close)
 exit
-rem 以下代码待优化，保存返回值并在这里输出。
+rem 将保存的返回值输出。
 :overnot0
 echo.
-echo 	程序的返回值非0~
+echo 	程序的返回值为：%returnnumber%
 rem 源文件运行的返回值为0时
 :over
 echo.
