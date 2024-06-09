@@ -16,12 +16,13 @@ set /p which=→退出or卸载：
 if "%which%" equ "y" goto unload
 if /i "%which%" equ "q" exit
 else (
-cls
-goto as_admin
+	cls
+	goto as_admin
 )
 :unload
-regedit /s tcc_shortcut_menuUnload.reg
 rem 删除注册表
+regedit /s tcc_shortcut_menuUnload.reg
+rem 复制最终卸载脚本到临时目录，用于删除安装路径的所有文件
 copy /y "tempUninstall.bat" "%temp%\TinyCCompiler_tempUninstall.bat"
 rem 复制安装路径到临时文件
 echo %~dp0>"%temp%\TinyCCompiler_uninstalldir.log"

@@ -9,14 +9,22 @@ ASSOC .c=c_file
 rem 设置安装路径
 set installdir=%~dp0
 rem 替换注册表文件的路径
-str "tcc_shortcut_menuInstallation.reg" 0 0 /R /asc:"TCCDir" /asc:"%installdir:\=\\%" /A
-rem 添加注册表
+(for /f "tokens=1,* delims=]" %%A in ('"type tcc_shortcut_menuInstallation.reg|find /n /v """') do (
+	set "line=%%B"
+	if defined line (
+		call set "line=echo.%%line:TCCDir\=%installdir:\=\\%%%"
+		for /f "delims=" %%X in ('"echo."%%line%%""') do %%~X
+	) else echo
+))>tcc_shortcut_menuInstallation_str.reg
+rem 替换完成的注册表文件覆盖替换前的文件
+move /Y tcc_shortcut_menuInstallation_str.reg tcc_shortcut_menuInstallation.reg
+rem 导入注册表
 regedit /s tcc_shortcut_menuInstallation.reg
 rem 检查是否有环境变量，没有就添加到PATH。
 echo %PATH% | find /I "%%TCC_HOME%%" >NUL
 if errorlevel 1 (
-rem 使用setx命令添加TCC_HOME到系统PATH
-setx /m PATH "%PATH%%%TCC_HOME%%"
+	rem 使用setx命令添加TCC_HOME到系统PATH
+	setx /m PATH "%PATH%%%TCC_HOME%%"
 )
 del /f /q "%temp%\getadmin.vbs"
 rem 删除安装注册表
