@@ -16,7 +16,7 @@ rem 检查是否有环境变量，没有就添加到PATH。
 echo %PATH% | find /I "%%TCC_HOME%%" >NUL
 if errorlevel 1 (
 rem 使用setx命令添加TCC_HOME到系统PATH
-setx /m PATH "%PATH%%%TCC_HOME%%"
+setx /m PATH "%PATH%;%%TCC_HOME%%"
 )
 del /f /q "%temp%\getadmin.vbs"
 rem 删除安装注册表
