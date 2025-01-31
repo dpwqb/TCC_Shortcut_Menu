@@ -1,0 +1,27 @@
+Path=.
+Setup=".\Tiny C Compiler\install.bat"
+Title=Tiny C Compiler 安装程序
+Text
+{
+使用方法：
+
+1、右键空白处新建C文件
+
+2、右键编写完成后的C文件选择“直接运行！”
+
+3、无误则直接在控制台运行
+
+4、有误则文件地址回显并弹出报错信息
+
+Website：https://dpoqb.top/
+}
+License=最终用户许可协议 (EULA)
+{
+最终用户许可协议：
+
+这是基于Tiny C Compiler的开源C语言便捷测试工具
+
+TCC官网： http://www.tinycc.org/
+
+此软件遵循 GNU Lesser General Public License
+}

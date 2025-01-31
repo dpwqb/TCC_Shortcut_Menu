@@ -1,6 +1,6 @@
 # TCC_Shortcut_Menu
 #### *这是附带快捷菜单的TCC安装包。*
-![图标](./C.png)
+![图标](./tcc.png)
 
 此项目引用了*Tiny C Compiler*。
 
@@ -25,5 +25,11 @@ My [Github Page](https://dpoqb.top/)
 这里更推荐将`.\Tiny C Compiler`文件夹使用压缩软件打包成自解压的压缩包。
 
 并且一定要设置：在解压完成后运行`Tiny C Compiler`目录中的`install.bat`文件。
+
+可以使用WinRAR通过以下命令创建自解压安装包：
+
+```
+"C:\Program Files\WinRAR\rar.exe" a -sfx"Default.SFX" -zWinRAR自解压注释.txt -m5 -s -md4m -oi1 -ol -r TinyC_Installer.exe ".\Tiny C Compiler\"
+```
 
 如果你不想自己打包，这里也有已经打包完成的[安装包](https://github.com/dpwqb/TCC_Shortcut_Menu/releases/download/release/TccForShell_x86_release.exe)可供下载。
